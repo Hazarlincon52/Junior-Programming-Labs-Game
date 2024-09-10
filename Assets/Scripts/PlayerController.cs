@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject camera;
+    [SerializeField] private GameObject camerak;
     [SerializeField] private Transform[] cameraPosPerStage;
     
-
     private PlatformMove pM;
     private Rigidbody rb;
 
-    [SerializeField] private float gravityModifier = 5f;
-    [SerializeField] private float jumpForce = 80f;
+    [SerializeField] private float jumpForce = 90f;
     private float xRange = 15f;
     private float horizontalInput;
     private float speed = 80f;
@@ -24,8 +22,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pM = GameObject.Find("Platform").GetComponent<PlatformMove>();
-
     }
 
     // Update is called once per frame
@@ -37,7 +33,7 @@ public class PlayerController : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             //transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
             rb.AddForce(Vector3.right * horizontalInput * speed);
-
+           
             if (rb.velocity.magnitude > maxSpeed)
             {
                 rb.velocity = rb.velocity.normalized * maxSpeed;
@@ -85,27 +81,27 @@ public class PlayerController : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Enter 1-2"))
             {
-                camera.transform.position = cameraPosPerStage[1].transform.position;
+                camerak.transform.position = cameraPosPerStage[1].transform.position;
                 GameManager.instance.SetStageText(2);
 
             }
 
             if (other.gameObject.CompareTag("Exit 1-1"))
             {
-                camera.transform.position = cameraPosPerStage[0].transform.position;
+                camerak.transform.position = cameraPosPerStage[0].transform.position;
                 GameManager.instance.SetStageText(1);
             }
 
             if (other.gameObject.CompareTag("Enter 2-1"))
             {
-                camera.transform.position = cameraPosPerStage[2].transform.position;
+                camerak.transform.position = cameraPosPerStage[2].transform.position;
                 GameManager.instance.SetStageText(3);
 
             }
 
             if (other.gameObject.CompareTag("Exit 1-2"))
             {
-                camera.transform.position = cameraPosPerStage[1].transform.position;
+                camerak.transform.position = cameraPosPerStage[1].transform.position;
                 GameManager.instance.SetStageText(2);
             }
             

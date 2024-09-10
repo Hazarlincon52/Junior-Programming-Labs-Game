@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI winText;
 
+    [SerializeField] private GameObject background;
     [SerializeField] private Button startButton;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button quitButton;
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         gameActive = true;
         startButton.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
     }
 
     public void RestartGame()
